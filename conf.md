@@ -1,14 +1,19 @@
 Titre de la conf
 ===
+
 Et pourquoi pas ... du temps réel avec GraphQL ?
+
 On a essayé : Du temps réel avec GraphQL ?
 
 Abstract
 ===
- - GraphQL C'est cool
- - module de subscription expérimental
- - Pourquoi pas réunir le temps réel et les data en un seul endpoint ?
- - Est-ce que c'est possible ?
+
+Avec la popularité(avenement ?) des application "single page" 
+Les applications Web reposent sur des API client/serveur pour récupérer les données dynamiquement. De nos jour la méthode la plus popularisé est la convention REST. Malheureusement cette convention comporte de forte contraintes : Elle multiplie les appels réseaux et expose un modèle de données fixe récupérant souvent trop d'informations. Alternative tendance, GraphQL vise à palier ces défauts. En effet il permet de décrire le modèle que l'on veut récupérer ainsi que de grouper ces demandes en un seul appel.
+De plus en plus d'application récentent souhaitent mettre en place des sytèmes de collaborations et/ou de Notifications qui ammènent respectivement des problématiques de temps réel ou de push. Souvent réglé par du long pooling ou avec des Websockets, nous avons découvert que GraphQL propose une fonctionnalité expérimentale de souscription.
+Nous nous somme lancé dans l'expérimentation de cette foncionnalité pour répondre à une de nos interrogations :
+Peut on réunir la récupération de données et le temps réel en un seul endpoint ?
+
 
 Mahdi
 ====
