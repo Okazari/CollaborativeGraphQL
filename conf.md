@@ -9,7 +9,7 @@ Abstract
 ===
 
 De plus en plus d'application souhaitent mettre en place des systèmes de collaborations ou de notifications. Actuellement réalisé via long pooling ou Websockets, nous avons découvert que GraphQL - alternative montante à la convention REST - propose une nouvelle fonctionnalité de souscription.
-L'utilisation de cette fonctionnalité permetrais de réunir le pull et le push via une seule technologie. 
+L'utilisation de cette fonctionnalité permettrait de réunir le pull et le push via une seule technologie. 
 Découvrez les avantages, les inconvénients et les limites de cette fonctionnalité de GraphQL.
 
 
