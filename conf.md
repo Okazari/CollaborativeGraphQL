@@ -1,20 +1,17 @@
 Titre de la conf
 ===
 
-Et pourquoi pas ... du temps réel avec GraphQL ?
-
-On a essayé : Du temps réel avec GraphQL ?
+Vos applications collaboratives avec GraphQL
 
 Abstract
 ===
 
-De plus en plus d'application récentes souhaitent mettre en place des sytèmes de collaborations et/ou de Notifications qui ammènent respectivement des problématiques de temps réel ou de push. Souvent réglé par du long pooling ou avec des Websockets, nous avons découvert que GraphQL propose une fonctionnalité expérimentale de souscription.
-Nous nous somme lancé dans l'expérimentation de cette nouvelle foncionnalité pour répondre à l'une de nos interrogations :
-Peut on réunir la récupération de données et le temps réel en un seul endpoint ?
+De plus en plus d'application récentes souhaitent mettre en place des sytèmes de collaborations ou de notifications. Actuellement réalisé via long pooling ou Websockets, nous avons découvert que GraphQL - alternative montant à la convention REST - propose une fonctionnalité expérimentale de souscription.
+L'utilisation de cette fonctionnalité permetrais de réunir le pull et le push via une seule technologie mais... est-ce vraiment une bonne idée ?
 
-Retours (avantages, inconvénients)
+Nous avons essayé !
 
-
+Venez découvrir les avantages, les inconvénients et les limites de l'état actuel de cette future fonctionnalité de GraphQL.
 
 
 Mahdi
