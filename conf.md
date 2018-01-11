@@ -43,4 +43,3 @@ Javascript addict, i love to play with recents front-end frameworks such as Reac
 
 Notes au Jury
 =====
-Alors que la bataille pour élire le meilleur framework font fait rage, nous avons décidé de nous concentrer sur la base commune aux différents frameworks : Le component design. En partant de la définition même du composant, nous allons au cours de la conférence décrire les patterns avancés et les bonnes pratiques du développement orienté composant (dumb/smart component, rendu en webworker, atomic design, utilisation de stores etc...), notre conférence vise à préparer le public aux  pratiques courantes du monde du Front.
