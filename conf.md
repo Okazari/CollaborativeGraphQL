@@ -3,15 +3,17 @@ Titre de la conf
 
 Vos applications collaboratives avec GraphQL
 
+Vos applications temps réel avec GraphQL
+
 Abstract
 ===
 
-De plus en plus d'application récentes souhaitent mettre en place des sytèmes de collaborations ou de notifications. Actuellement réalisé via long pooling ou Websockets, nous avons découvert que GraphQL - alternative montant à la convention REST - propose une fonctionnalité expérimentale de souscription.
-L'utilisation de cette fonctionnalité permetrais de réunir le pull et le push via une seule technologie mais... est-ce vraiment une bonne idée ?
+De plus en plus d'application souhaitent mettre en place des systèmes de collaborations ou de notifications. Actuellement réalisé via long pooling ou Websockets, nous avons découvert que GraphQL - alternative montante à la convention REST - propose une nouvelle fonctionnalité de souscription.
+L'utilisation de cette fonctionnalité permetrais de réunir le pull et le push via une seule technologie. 
 
 Nous avons essayé !
 
-Venez découvrir les avantages, les inconvénients et les limites de l'état actuel de cette future fonctionnalité de GraphQL.
+Venez découvrir les avantages, les inconvénients et les limites de l'état actuel de cette fonctionnalité de GraphQL.
 
 
 Mahdi
