@@ -8,9 +8,16 @@ Vos applications temps réel avec GraphQL
 Abstract
 ===
 
+V1
+--
+
 De plus en plus d'application souhaitent mettre en place des systèmes de collaborations ou de notifications. Actuellement réalisé via long pooling ou Websockets, nous avons découvert que GraphQL - alternative montante à la convention REST - propose une nouvelle fonctionnalité de souscription.
 L'utilisation de cette fonctionnalité permettrait de réunir le pull et le push via une seule technologie. 
 Découvrez les avantages, les inconvénients et les limites de cette fonctionnalité de GraphQL.
+
+V2
+--
+Aujourd'hui les applications sont de plus en plus collaborative et ont besoin de partager des données en temps réel. La récente norme GraphQL, alternative à l'architecture REST promue par Facebook, propose depuis peu un mécanisme de souscription qui pourrait permettre de réunir la communication client -> serveur (pull) et serveur -> client (push) en une API unique. Nous avons testé cette technologie prometteuse pour découvrir ses avantages mais aussi ses limites.
 
 
 Mahdi
