@@ -19,6 +19,10 @@ V2
 --
 Aujourd'hui les applications sont de plus en plus collaborative et ont besoin de partager des données en temps réel. La récente norme GraphQL, alternative à l'architecture REST promue par Facebook, propose depuis peu un mécanisme de souscription qui pourrait permettre de réunir la communication client -> serveur (pull) et serveur -> client (push) en une API unique. Nous avons testé cette technologie prometteuse pour découvrir ses avantages mais aussi ses limites.
 
+V3
+--
+Aujourd'hui les applications sont de plus en plus collaborative et ont besoin de partager des données en temps réel. Des solutions existent (WebSockets, Server-sent events...) mais doivent être implémenté majoritairement à la main pour les différents cas fonctionnels. La récente norme GraphQL, alternative à l'architecture REST promue par Facebook, propose depuis peu un puissant mécanisme de souscription qui permet de s'abonner directement à des ressources et être notifié à chaque changements. De plus cela pourrait permettre de réunir la communication client -> serveur (pull) et serveur -> client (push) en une API unique.Nous avons testé cette technologie prometteuse pour découvrir ses avantages mais aussi ses limites.
+
 
 Mahdi
 ====
