@@ -53,3 +53,4 @@ Javascript addict, i love to play with recents front-end frameworks such as Reac
 
 Notes au Jury
 =====
+La conférence sera centrée sur une démo incrémentale intéractive (nous prévoyons de donner accès au public à l'application à différentes étapes) démontrant les différentes problématiques que nous avons rencontré (Cohérence des données, Accès concurrent etc...) et les solutions (ou contournements) que nous avons découverts.
