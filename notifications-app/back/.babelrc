@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        "transform-object-rest-spread"
+    ],
+    "ignore": [
+        "**/*.json",
+        "**/*.gql"
+    ],
+    "presets": [
+        ["env", {
+            "targets": {
+                "node": true
+            }
+        }]
+    ]
+}
