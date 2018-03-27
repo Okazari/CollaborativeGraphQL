@@ -9,7 +9,7 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import registerServiceWorker from './registerServiceWorker';
 import Config from './config';
-import App from './components';
+import Views from './views';
 
 const wsLink = new WebSocketLink({
     uri: `ws://${Config.api.websocket.host}:${Config.api.websocket.port}${Config.api.websocket.endpoint}`,
@@ -34,6 +34,6 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <App />
+        <Views />
     </ApolloProvider>, document.getElementById('root'));
 registerServiceWorker();

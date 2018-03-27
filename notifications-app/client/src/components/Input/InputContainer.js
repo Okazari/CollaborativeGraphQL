@@ -1,4 +1,5 @@
-import { graphql } from 'react-apollo';
+import React from 'react';
+import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const AddMessage = gql`
@@ -10,8 +11,7 @@ const AddMessage = gql`
     }
 `;
 
-export default InputComponent => graphql(AddMessage, {
-    props: ({ mutate }) => ({
-        addMessage: variables => mutate({ variables }),
-    }),
-})(InputComponent);
+export default InputComponent =>
+    <Mutation mutation={AddMessage} >
+        {mutate => <InputComponent addMessage={variables => mutate({ variables })} />}
+    </Mutation>

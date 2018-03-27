@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import debounce from 'lodash.debounce';
 
 export default class InputContainer extends Component {
     constructor(props) {
@@ -12,12 +13,12 @@ export default class InputContainer extends Component {
         this.setState({ inputValue });
     }
 
-    submitMessage = () => {
+    submitMessage = debounce(() => {
         const { addMessage } = this.props;
         const { inputValue } = this.state;
 
         addMessage({ username: 'admin', content: inputValue });
-    }
+    }, 500);
 
     render() {
         return (
