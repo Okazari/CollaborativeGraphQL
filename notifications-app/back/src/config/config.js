@@ -4,7 +4,7 @@ export default {
       version: '0.0.1',
       env: process.env.APP_ENV || 'dev',
       port: process.env.APP_PORT || 4000,
-      host: process.env.HOSTNAME || 'localhost',
+      host: process.env.APP_HOSTNAME || 'localhost',
       websocket: process.env.APP_WEB_SOCKET || 5000,
     },
     api: {
