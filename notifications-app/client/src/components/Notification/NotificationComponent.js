@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Input from '../Input'
 
 const messageStyle = {
   backgroundColor: 'lavender',
@@ -36,7 +37,7 @@ const buildMessage = (m, i) => {
   return (
     <div style={s}>
       <div style={{ ...userStyle }}>
-        {m.user}
+        {m.username}
       </div>
       <div style={{ ...contentStyle }}>
         {m.content}
@@ -45,16 +46,25 @@ const buildMessage = (m, i) => {
   )
 }
 
-export default ({ data, loading }) => {
- const messages = []
- return (
-   <div>
-     <div style={{ ... containerStyle}}>
-         {
-           !loading ? messages.map(buildMessage)
-           : 'Aucun message'
-         }
-     </div>
-   </div>
- )
+export default class InputComponent extends Component {
+  componentDidMount() {
+    const { subscribeToNewMessages } = this.props;
+    console.log(subscribeToNewMessages);
+    subscribeToNewMessages();
+  }
+
+  render() {
+    const { loading, data: { messages } } = this.props;
+    return (
+      <div>
+        <div style={{ ... containerStyle}}>
+          <Input />
+            {
+              !loading ? messages.map(buildMessage)
+              : 'Aucun message'
+            }
+        </div>
+      </div>
+    );
+  }
 }
