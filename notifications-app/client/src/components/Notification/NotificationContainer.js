@@ -1,10 +1,21 @@
 import React from 'react';
-import { Subscription } from 'react-apollo';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+
+const MessagesQuery = gql`
+    query getMessages {
+        messages {
+            id
+            username
+            content
+        }
+    }
+`;
 
 const NotificationSubscription = gql`
     subscription onMessageAdded {
         messageAdded {
+            id
             username
             content
         }
@@ -12,9 +23,21 @@ const NotificationSubscription = gql`
 `;
 
 export default NotificationComponent =>
-    <Subscription subscription={NotificationSubscription}>
-        {
-            ({ data, loading }) => 
-                <NotificationComponent data={data} loading={loading} />
-        }
-    </ Subscription>;
+    <Query query={MessagesQuery}>
+      {({ subscribeToMore, ...res }) => (
+        <NotificationComponent
+          {...res}
+          subscribeToNewMessages={() =>
+            subscribeToMore({
+              document: NotificationSubscription,
+              updateQuery: (prev, { subscriptionData }) => {
+                  if (!subscriptionData.data) return prev;
+                  const newMessage = subscriptionData.data.messageAdded;
+                  return { messages: [newMessage, ...prev.messages] };
+              }
+            })
+          }
+        />
+      )}
+    </Query>
+  ;

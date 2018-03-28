@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default ({ data, loading }) => 
-<div>
-    { loading ? 'loading...' : <div>{data.messageAdded.content}</div> }
-</div> 
+export default class InputComponent extends Component {
+  componentDidMount() {
+    const { subscribeToNewMessages } = this.props;
+    console.log(subscribeToNewMessages);
+    subscribeToNewMessages();
+  }
+
+  render() {
+    const { loading, data: { messages } } = this.props;
+    return (
+      <div>{loading ? 'loading...' : messages.map(({ id, content }) => <span key={id}>{content}</span>)}</div>
+    );
+  }
+}
