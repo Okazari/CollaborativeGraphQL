@@ -1,12 +1,12 @@
 export default {
     api: {
         http: {
-            host: 'localhost',
+            host: '192.168.1.2',
             port: 4000,
             endpoint: '/graphql',
         },
         websocket: {
-            host: 'localhost',
+            host: '192.168.1.2',
             port: 5000,
             endpoint: '/subscriptions',
         }

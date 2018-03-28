@@ -11,7 +11,7 @@ export default {
     Mutation: {
         addMessage: (obj, { username, content }, ctx, info) => {
             const message = { id: messages.length.toString(), username, content };
-            messages.shift(message);
+            messages.unshift(message);
             pubsub.publish('messageAdded', { messageAdded: message });
             return message;
         },
