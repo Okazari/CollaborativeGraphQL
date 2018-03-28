@@ -1,0 +1,14 @@
+{
+  "name": "notifications-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-back": "cd ./back/ && npm start",
+    "start-client": "cd ./client/ && npm start",
+    "start": "concurrently -p name -n \"SERVER,CLIENT\" -c \"green.bold,blue.bold\" \"npm run start-back\" \"npm run start-client\""
+  },
+  "dependencies": {
+    "concurrently": "^3.5.1"
+  }
+}
