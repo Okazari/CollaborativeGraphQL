@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "new-notifications-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "lerna run start --stream"
+  },
+  "dependencies": {
+    "lerna": "^3.20.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

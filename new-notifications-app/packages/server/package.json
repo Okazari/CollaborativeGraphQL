@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:babel": "babel-node src",
+    "start": "cross-env NODE_PATH=./src nodemon --exec \"yarn start:babel\" --ext js,json,graphql,csv --watch ./src --watch ../il-schema/src --delay 500ms",
+    "start:prod": "yarn build && cross-env NODE_PATH=./build node ./build",
+    "clean": "rimraf ./build/**",
+    "build": "babel ./src --out-dir ./build --copy-files"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "base-64": "^0.1.0",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^5.2.0",
+    "eslint-plugin-node": "^9.1.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "graphql": "^14.5.4",
+    "graphql-tools": "^4.0.5",
+    "graphql-voyager": "^1.0.0-rc.27",
+    "graphql-yoga": "^1.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.1",
+    "rimraf": "^2.6.3"
+  },
+  "resolve": {
+    "graphql": "14.5.4"
+  }
+}
