@@ -1,10 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { useQuery } from "react-apollo";
 import gql from "graphql-tag";
 import get from "lodash/get";
+import uniq from "lodash/uniq";
+import faker from "faker";
 import Message from "./Message";
 import { useUsername } from "../../common";
+
+const colorList = [
+  "#ffbca8",
+  "#babbea",
+  "#dfcae2",
+  "#c8e2de",
+  "#e9eaba",
+  "#f2bdbd",
+];
+
+const colorCache = JSON.parse(
+  window.localStorage.getItem("colorCache") || "{}"
+);
+
+const getUserColor = (username) => {
+  if (colorCache[username]) return colorCache[username];
+  const color = faker.helpers.shuffle(colorList)[0];
+  colorCache[username] = color;
+  window.localStorage.setItem("colorCache", JSON.stringify(colorCache));
+  return color;
+};
 
 const Container = styled.div`
   display: flex;
@@ -50,13 +73,24 @@ const ChatArea = () => {
       },
     });
   }, [subscribeToMore]);
+  const usernames = uniq(messages.map((m) => m.username));
+  const colorMap = useMemo(
+    () =>
+      usernames.reduce(
+        (acc, username) => ({ ...acc, [username]: getUserColor(username) }),
+        {}
+      ),
+    [usernames.length]
+  );
+  console.log(colorMap);
+
   return (
     <Container>
       {!loading &&
         messages.map(({ id, username, content }, index) => (
           <Message
             key={id}
-            secondary={username !== currentUsername}
+            color={username !== currentUsername ? colorMap[username] : null}
             username={username}
             content={content}
           />
