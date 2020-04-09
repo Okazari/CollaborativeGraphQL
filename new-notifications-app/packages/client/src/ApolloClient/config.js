@@ -8,7 +8,7 @@ export default {
     websocket: {
       host: "localhost",
       port: 3001,
-      endpoint: "/api/subscriptions",
+      endpoint: "/",
     },
   },
 };
