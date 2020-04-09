@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
-import { Button, Input, Box, useUsername } from "../../common";
+import { useHistory } from "react-router-dom";
+import { Button, Input, Box, useUser } from "../../common";
 
 const addMessage = gql`
-  mutation addMessage($username: String!, $content: String!) {
-    addMessage(username: $username, content: $content) {
+  mutation addMessage($userId: ID!, $content: String!) {
+    addMessage(userId: $userId, content: $content) {
       id
     }
   }
@@ -19,7 +20,8 @@ const useFocusOnLoad = (ref) => {
 
 const MessageInputBox = () => {
   const [message, setMessage] = useState("");
-  const username = useUsername();
+  const user = useUser();
+  const history = useHistory();
   const messageInputRef = useRef(null);
   const [sendMessage] = useMutation(addMessage);
   useFocusOnLoad(messageInputRef);
@@ -28,13 +30,15 @@ const MessageInputBox = () => {
       e.preventDefault();
       if (message) {
         sendMessage({
-          variables: { username, content: message },
+          variables: { userId: user.id, content: message },
+        }).catch(() => {
+          history.push("/");
         });
         setMessage("");
         messageInputRef.current.focus();
       }
     },
-    [sendMessage, username, message]
+    [sendMessage, user, message]
   );
 
   return (

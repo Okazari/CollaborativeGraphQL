@@ -1,6 +1,6 @@
 type Message {
   id: ID!
-  username: String!
+  user: User!
   content: String!
   timestamp: Float!
 }
@@ -10,12 +10,24 @@ type Query {
   message(id: ID!): Message
 }
 
+type User {
+  id: ID!
+  username: String!
+}
+
 type Mutation {
-  addMessage(username: String!, content: String!): Message
+  addMessage(userId: ID!, content: String!): Message
+  connectUser(user: UserInput!): User
+}
+
+input UserInput {
+  username: String!
+  key: String!
 }
 
 type Subscription {
   messageAdded: Message
+  userConnected: User
 }
 
 schema {

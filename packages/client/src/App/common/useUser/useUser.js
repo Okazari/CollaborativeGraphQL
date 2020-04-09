@@ -1,10 +1,10 @@
 import qs from "query-string";
 import { useLocation } from "react-router-dom";
 
-const useUsername = () => {
+const useUser = () => {
   const location = useLocation();
   const search = qs.parse(location.search);
-  return search.username;
+  return { id: search.userId };
 };
 
-export default useUsername;
+export default useUser;

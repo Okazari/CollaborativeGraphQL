@@ -4,7 +4,7 @@ import { useQuery } from "react-apollo";
 import gql from "graphql-tag";
 import get from "lodash/get";
 import Message from "./Message";
-import { useUsername, useUsernamesColors } from "../../common";
+import { useUser, useUsernamesColors } from "../../common";
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,10 @@ const query = gql`
     messages {
       id
       content
-      username
+      user {
+        id
+        username
+      }
       timestamp
     }
   }
@@ -30,7 +33,10 @@ const subscription = gql`
     messageAdded {
       id
       content
-      username
+      user {
+        id
+        username
+      }
       timestamp
     }
   }
@@ -38,7 +44,7 @@ const subscription = gql`
 
 const ChatArea = () => {
   const { data, loading, subscribeToMore } = useQuery(query);
-  const currentUsername = useUsername();
+  const currentUser = useUser();
   const messages = get(data, "messages", []);
   useEffect(() => {
     subscribeToMore({
@@ -57,17 +63,19 @@ const ChatArea = () => {
   return (
     <Container>
       {!loading &&
-        messages.map(({ id, username, content, timestamp }) => (
-          <Message
-            key={id}
-            color={
-              username !== currentUsername ? usernameColorMap[username] : null
-            }
-            date={timestamp}
-            username={username}
-            content={content}
-          />
-        ))}
+        messages.map(
+          ({ id, user: { id: userId, username }, content, timestamp }) => (
+            <Message
+              key={id}
+              color={
+                userId !== currentUser.id ? usernameColorMap[username] : null
+              }
+              date={timestamp}
+              username={username}
+              content={content}
+            />
+          )
+        )}
     </Container>
   );
 };

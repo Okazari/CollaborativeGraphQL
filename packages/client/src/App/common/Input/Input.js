@@ -26,6 +26,7 @@ const Label = styled.label`
 const Input = ({
   inputRef,
   label,
+  type,
   placeholder,
   onChange: _onChange,
   value,
@@ -44,6 +45,7 @@ const Input = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        type={type}
       />
     </InputContainer>
   );

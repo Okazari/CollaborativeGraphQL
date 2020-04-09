@@ -22,6 +22,8 @@ const Username = styled.div`
 
 const MessageContent = styled.div`
   font-size: 1.2rem;
+  word-break: break-word;
+  white-space: pre-wrap;
 `;
 
 const MessageDate = styled.div`
@@ -34,9 +36,7 @@ const useDateDistanceToNow = (givenDate) => {
   );
   useEffect(() => {
     setInterval(
-      () =>
-        console.log("yes") ||
-        setDate(formatDistanceToNow(givenDate, { includeSeconds: true })),
+      () => setDate(formatDistanceToNow(givenDate, { includeSeconds: true })),
       1000
     );
   }, []);
