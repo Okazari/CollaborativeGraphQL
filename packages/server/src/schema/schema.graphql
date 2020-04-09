@@ -2,6 +2,7 @@ type Message {
   id: ID!
   username: String!
   content: String!
+  timestamp: Float!
 }
 
 type Query {
