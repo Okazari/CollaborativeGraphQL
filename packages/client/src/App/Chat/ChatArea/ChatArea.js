@@ -35,7 +35,9 @@ const subscription = gql`
 `;
 
 const ChatArea = () => {
-  const { data, loading, subscribeToMore } = useQuery(query);
+  const { data, loading, subscribeToMore } = useQuery(query, {
+    fetchPolicy: "network-only",
+  });
   const currentUser = useUser();
   const messages = get(data, "messages", []);
   useEffect(() => {

@@ -34,8 +34,17 @@ const Chip = styled.div`
   background-color: ${({ color }) => color};
 `;
 
+const UsernameLabel = styled.div`
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+`;
+
 const UserList = () => {
-  const { data, subscribeToMore } = useQuery(query);
+  const { data, subscribeToMore } = useQuery(query, {
+    fetchPolicy: "network-only",
+  });
 
   useEffect(() => {
     subscribeToMore({
@@ -64,9 +73,9 @@ const UserList = () => {
                   <Chip
                     color={user.id === id ? "#b7e0b7" : getUserColor(username)}
                   />
-                  <div>
+                  <UsernameLabel>
                     {username} {user.id === id && "(you)"}
-                  </div>
+                  </UsernameLabel>
                 </Cols>
               </Username>
             ))}

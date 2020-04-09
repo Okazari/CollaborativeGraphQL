@@ -8,6 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import UsernameSelection from "./UsernameSelection";
+import { Cols } from "./common";
 
 const AppContainer = styled.div`
   font-family: Arial, Helvetica, sans-serif;
@@ -18,7 +19,9 @@ const App = () => (
     <Router>
       <Switch>
         <Route exact path="/">
-          <UsernameSelection />
+          <Cols layout="400px" horizontalAlign="center">
+            <UsernameSelection />
+          </Cols>
         </Route>
         <Route path="/chat">
           <Chat />
