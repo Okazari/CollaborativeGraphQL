@@ -25,7 +25,13 @@ const subscription = gql`
 
 const Username = styled.div`
   color: ${({ color }) => color};
-  font-weight: 700;
+`;
+
+const Chip = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: ${({ color }) => color};
 `;
 
 const UserList = () => {
@@ -53,11 +59,15 @@ const UserList = () => {
           <Label>Connected Users</Label>
           <Rows gap=".5rem">
             {users.map(({ username, id }) => (
-              <Username
-                key={id}
-                color={user.id === id ? "#b7e0b7" : getUserColor(username)}
-              >
-                {username} {user.id === id && "(you)"}
+              <Username key={id}>
+                <Cols layout="auto" gap="0.5rem" verticalAlign="center">
+                  <Chip
+                    color={user.id === id ? "#b7e0b7" : getUserColor(username)}
+                  />
+                  <div>
+                    {username} {user.id === id && "(you)"}
+                  </div>
+                </Cols>
               </Username>
             ))}
           </Rows>
