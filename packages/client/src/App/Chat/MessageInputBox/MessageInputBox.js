@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
-import { Button, Input, Box, useUsername } from "../common";
+import { Button, Input, Box, useUsername } from "../../common";
 console.log(useUsername);
 
 const addMessage = gql`
@@ -12,11 +12,18 @@ const addMessage = gql`
   }
 `;
 
-const MessageBox = () => {
+const useFocusOnLoad = (ref) => {
+  useEffect(() => {
+    ref.current.focus();
+  }, [ref]);
+};
+
+const MessageInputBox = () => {
   const [message, setMessage] = useState("");
   const username = useUsername();
   const messageInputRef = useRef(null);
   const [sendMessage] = useMutation(addMessage);
+  useFocusOnLoad(messageInputRef);
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -46,4 +53,4 @@ const MessageBox = () => {
     </form>
   );
 };
-export default MessageBox;
+export default MessageInputBox;

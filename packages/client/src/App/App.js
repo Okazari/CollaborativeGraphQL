@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import MessageBox from "./MessageBox";
-import Chatbox from "./ChatBox";
+import Chat from "./Chat";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import UsernameBox from "./UsernameBox";
+import UsernameSelection from "./UsernameSelection";
 
 const AppContainer = styled.div`
   font-family: Arial, Helvetica, sans-serif;
@@ -19,11 +18,10 @@ const App = () => (
     <Router>
       <Switch>
         <Route exact path="/">
-          <UsernameBox />
+          <UsernameSelection />
         </Route>
         <Route path="/chat">
-          <MessageBox />
-          <Chatbox />
+          <Chat />
         </Route>
         <Redirect to="/chat" />
       </Switch>

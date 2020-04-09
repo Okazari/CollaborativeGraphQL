@@ -4,7 +4,7 @@ import { useQuery } from "react-apollo";
 import gql from "graphql-tag";
 import get from "lodash/get";
 import Message from "./Message";
-import { useUsername } from "../common";
+import { useUsername } from "../../common";
 
 const Container = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const subscription = gql`
   }
 `;
 
-const Chatbox = () => {
+const ChatArea = () => {
   const { data, loading, subscribeToMore } = useQuery(query);
   const currentUsername = useUsername();
   const messages = get(data, "messages", []);
@@ -65,4 +65,4 @@ const Chatbox = () => {
   );
 };
 
-export default Chatbox;
+export default ChatArea;

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Input, Box } from "../common";
 import qs from "query-string";
 
-const UsernameBox = () => {
+const UsernameSelection = () => {
   const [username, setUsername] = useState("");
   const history = useHistory();
   const onClick = useCallback(
@@ -31,4 +31,4 @@ const UsernameBox = () => {
   );
 };
 
-export default UsernameBox;
+export default UsernameSelection;
