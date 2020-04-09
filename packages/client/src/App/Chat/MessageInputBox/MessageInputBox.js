@@ -2,7 +2,6 @@ import React, { useState, useCallback, useRef, useEffect } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
 import { Button, Input, Box, useUsername } from "../../common";
-console.log(useUsername);
 
 const addMessage = gql`
   mutation addMessage($username: String!, $content: String!) {
