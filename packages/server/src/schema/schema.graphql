@@ -7,7 +7,7 @@ type Message {
 
 type Query {
   messages: [Message]
-  message(id: ID!): Message
+  users: [User]
 }
 
 type User {

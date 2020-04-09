@@ -15,7 +15,7 @@ const colorCache = JSON.parse(
   window.localStorage.getItem("colorCache") || "{}"
 );
 
-const getUserColor = (username) => {
+export const getUserColor = (username) => {
   if (colorCache[username]) return colorCache[username];
   const color = faker.helpers.shuffle(colorList)[0];
   colorCache[username] = color;
@@ -24,7 +24,7 @@ const getUserColor = (username) => {
 };
 
 const useUsernameColors = (messages) => {
-  const usernames = uniq(messages.map((m) => m.username));
+  const usernames = uniq(messages.map((m) => m.user.username));
   return useMemo(
     () =>
       usernames.reduce(

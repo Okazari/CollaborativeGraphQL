@@ -1,13 +1,13 @@
 export default {
   api: {
     http: {
-      host: "cd91d616.ngrok.io",
-      port: "",
+      host: "localhost",
+      port: "3001",
       endpoint: "/api/graphql",
     },
     websocket: {
-      host: "cd91d616.ngrok.io",
-      port: "",
+      host: "localhost",
+      port: "3001",
       endpoint: "/",
     },
   },

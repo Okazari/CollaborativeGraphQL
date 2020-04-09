@@ -4,15 +4,7 @@ import { useQuery } from "react-apollo";
 import gql from "graphql-tag";
 import get from "lodash/get";
 import Message from "./Message";
-import { useUser, useUsernamesColors } from "../../common";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400;
-  margin: auto;
-`;
+import { useUser, useUsernamesColors, Rows, Cols } from "../../common";
 
 const query = gql`
   query {
@@ -59,24 +51,25 @@ const ChatArea = () => {
     });
   }, [subscribeToMore]);
   const usernameColorMap = useUsernamesColors(messages);
-
   return (
-    <Container>
-      {!loading &&
-        messages.map(
-          ({ id, user: { id: userId, username }, content, timestamp }) => (
-            <Message
-              key={id}
-              color={
-                userId !== currentUser.id ? usernameColorMap[username] : null
-              }
-              date={timestamp}
-              username={username}
-              content={content}
-            />
-          )
-        )}
-    </Container>
+    <Cols layout="500px" horizontalAlign="center">
+      <Rows gap=".5rem" horizontalAlign="center">
+        {!loading &&
+          messages.map(
+            ({ id, user: { id: userId, username }, content, timestamp }) => (
+              <Message
+                key={id}
+                color={
+                  userId !== currentUser.id ? usernameColorMap[username] : null
+                }
+                date={timestamp}
+                username={username}
+                content={content}
+              />
+            )
+          )}
+      </Rows>
+    </Cols>
   );
 };
 

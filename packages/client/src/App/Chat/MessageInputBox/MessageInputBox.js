@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
-import { Button, Input, Box, useUser } from "../../common";
+import { Button, Input, Box, useUser, Rows } from "../../common";
 
 const addMessage = gql`
   mutation addMessage($userId: ID!, $content: String!) {
@@ -44,14 +44,16 @@ const MessageInputBox = () => {
   return (
     <form>
       <Box>
-        <Input
-          inputRef={messageInputRef}
-          label="Message"
-          value={message}
-          onChange={setMessage}
-          placeholder="Bonsoir à tous."
-        />
-        <Button onClick={onSubmit}>Submit</Button>
+        <Rows>
+          <Input
+            inputRef={messageInputRef}
+            label="Message"
+            value={message}
+            onChange={setMessage}
+            placeholder="Bonsoir à tous."
+          />
+          <Button onClick={onSubmit}>Submit</Button>
+        </Rows>
       </Box>
     </form>
   );

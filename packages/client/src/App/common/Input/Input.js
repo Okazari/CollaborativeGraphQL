@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import gql from "graphql-tag";
 import styled from "styled-components";
-import { useMutation } from "react-apollo";
+import { Rows } from "../flexs";
+import Label from "../Label";
 
 const DOMInput = styled.input`
   border: none;
@@ -11,18 +11,6 @@ const DOMInput = styled.input`
     border-color: darkseagreen;
   }
 `;
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-`;
-
-const Label = styled.label`
-  margin-bottom: 10px;
-  color: #729072;
-`;
-
 const Input = ({
   inputRef,
   label,
@@ -38,7 +26,7 @@ const Input = ({
     [_onChange]
   );
   return (
-    <InputContainer>
+    <Rows gap="0.5rem">
       <Label>{label}</Label>
       <DOMInput
         ref={inputRef}
@@ -47,7 +35,7 @@ const Input = ({
         onChange={onChange}
         type={type}
       />
-    </InputContainer>
+    </Rows>
   );
 };
 export default Input;

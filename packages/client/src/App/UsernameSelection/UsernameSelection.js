@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { Button, Input, Box } from "../common";
+import { Button, Input, Box, Rows } from "../common";
 import qs from "query-string";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
@@ -16,7 +16,6 @@ const mutation = gql`
 `;
 
 const Error = styled.div`
-  margin-top: 10px;
   color: tomato;
 `;
 
@@ -44,21 +43,23 @@ const UsernameSelection = () => {
   return (
     <form onSubmit={onClick}>
       <Box>
-        <Input
-          label="Username"
-          value={username}
-          onChange={setUsername}
-          placeholder="Bob, Joeffrey, Stark..."
-        />
-        <Input
-          label="Key (don't use a real password 🙏) "
-          type="password"
-          value={password}
-          onChange={setPassword}
-          placeholder="toto, tata, titi..."
-        />
-        <Button>{!loading ? "GO TO CHAT" : "Connecting..."}</Button>
-        <Error>{error}</Error>
+        <Rows>
+          <Input
+            label="Username"
+            value={username}
+            onChange={setUsername}
+            placeholder="Bob, Joeffrey, Stark..."
+          />
+          <Input
+            label="Key (don't use a real password 🙏) "
+            type="password"
+            value={password}
+            onChange={setPassword}
+            placeholder="toto, tata, titi..."
+          />
+          <Button>{!loading ? "GO TO CHAT" : "Connecting..."}</Button>
+          {error && <Error>{error}</Error>}
+        </Rows>
       </Box>
     </form>
   );

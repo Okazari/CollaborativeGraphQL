@@ -1,1 +1,1 @@
-export { default } from "./useUsernamesColors";
+export { default, getUserColor } from "./useUsernamesColors";

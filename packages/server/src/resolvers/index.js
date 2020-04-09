@@ -15,6 +15,7 @@ const findUserByUsername = (usernameToSearch) => {
 
 export default {
   Query: {
+    users: () => Object.values(users),
     messages: () =>
       messages
         .filter((m) => !!m.user)
@@ -29,10 +30,10 @@ export default {
           ...user,
         };
         users[id] = newUser;
+        pubsub.publish("userConnected", { userConnected: newUser });
         return newUser;
       } else {
         const foundUser = findUserByUsername(user.username);
-        console.log(foundUser, foundUser.key, user.key);
         if (user.key === foundUser.key) return foundUser;
         else throw new GraphQLError("WRONG KEY");
       }
@@ -53,6 +54,9 @@ export default {
   Subscription: {
     messageAdded: {
       subscribe: () => pubsub.asyncIterator("messageAdded"),
+    },
+    userConnected: {
+      subscribe: () => pubsub.asyncIterator("userConnected"),
     },
   },
 };
