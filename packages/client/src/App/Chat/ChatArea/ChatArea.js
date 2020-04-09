@@ -20,6 +20,7 @@ const query = gql`
       id
       content
       username
+      timestamp
     }
   }
 `;
@@ -30,6 +31,7 @@ const subscription = gql`
       id
       content
       username
+      timestamp
     }
   }
 `;
@@ -55,12 +57,13 @@ const ChatArea = () => {
   return (
     <Container>
       {!loading &&
-        messages.map(({ id, username, content }, index) => (
+        messages.map(({ id, username, content, timestamp }) => (
           <Message
             key={id}
             color={
               username !== currentUsername ? usernameColorMap[username] : null
             }
+            date={timestamp}
             username={username}
             content={content}
           />

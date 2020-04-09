@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { formatDistanceToNow } from "date-fns";
 
 const MessageContainer = styled.div`
   background-color: ${({ color }) => color || "#b7e0b7"};
@@ -11,6 +12,8 @@ const MessageContainer = styled.div`
 `;
 
 const Username = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
   font-weight: 400;
   color: grey;
@@ -21,11 +24,37 @@ const MessageContent = styled.div`
   font-size: 1.2rem;
 `;
 
-const Message = ({ content, username, color }) => (
-  <MessageContainer color={color}>
-    <Username>{username}</Username>
-    <MessageContent>{content}</MessageContent>
-  </MessageContainer>
-);
+const MessageDate = styled.div`
+  font-size: 0.8rem;
+`;
+
+const useDateDistanceToNow = (givenDate) => {
+  const [date, setDate] = useState(
+    formatDistanceToNow(givenDate, { includeSeconds: true })
+  );
+  useEffect(() => {
+    setInterval(
+      () =>
+        console.log("yes") ||
+        setDate(formatDistanceToNow(givenDate, { includeSeconds: true })),
+      1000
+    );
+  }, []);
+
+  return date;
+};
+
+const Message = ({ content, username, color, date }) => {
+  const formatedDate = useDateDistanceToNow(date);
+  return (
+    <MessageContainer color={color}>
+      <Username>
+        <div>{username}</div>
+        <MessageDate>{formatedDate}</MessageDate>
+      </Username>
+      <MessageContent>{content}</MessageContent>
+    </MessageContainer>
+  );
+};
 
 export default Message;
